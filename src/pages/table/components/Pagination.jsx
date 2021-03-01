@@ -1,8 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const LEFT_PAGE = "LEFT";
-const RIGHT_PAGE = "RIGHT";
+const LEFT_PAGE = 'LEFT';
+const RIGHT_PAGE = 'RIGHT';
 const range = (from, to, step = 1) => {
   const range = [];
   for (let i = from; i <= to; i += step) {
@@ -88,8 +88,7 @@ const Pagination = ({
                         className="page-link"
                         href="#/"
                         aria-label="Previous"
-                        onClick={handleMoveLeft}
-                      >
+                        onClick={handleMoveLeft}>
                         <span aria-hidden="true">&laquo;</span>
                         <span className="sr-only">Previous</span>
                       </a>
@@ -104,8 +103,7 @@ const Pagination = ({
                         className="page-link"
                         href="#/"
                         aria-label="Next"
-                        onClick={handleMoveRight}
-                      >
+                        onClick={handleMoveRight}>
                         <span aria-hidden="true">&raquo;</span>
                         <span className="sr-only">Next</span>
                       </a>
@@ -114,17 +112,8 @@ const Pagination = ({
                 }
 
                 return (
-                  <li
-                    key={index}
-                    className={`page-item${
-                      currentPage === page ? " active" : ""
-                    }`}
-                  >
-                    <a
-                      className="page-link"
-                      href="#/"
-                      onClick={() => handleClick(page)}
-                    >
+                  <li key={index} className={`page-item${currentPage === page ? ' active' : ''}`}>
+                    <a className="page-link" href="#/" onClick={() => handleClick(page)}>
                       {page}
                     </a>
                   </li>
@@ -139,8 +128,7 @@ const Pagination = ({
               className="form-select mb-3 ml-2"
               aria-label="Page items limit"
               defaultValue={20}
-              onChange={onSelect}
-            >
+              onChange={onSelect}>
               <option value="20">20</option>
               <option value="30">30</option>
               <option value="50">50</option>

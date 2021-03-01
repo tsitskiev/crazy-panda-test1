@@ -1,11 +1,11 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const Filter = ({ value, onFilterChange }) => {
   return (
     <input
       type="text"
-      className="form-control mb-4"
+      className="form-control mr-2"
       placeholder="Find by name"
       onChange={onFilterChange}
       value={value}

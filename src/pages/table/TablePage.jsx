@@ -44,8 +44,9 @@ const TablePage = ({ data = [] }) => {
   };
 
   const filterHandler = (e) => {
-    const value = e.target.value.toLowerCase();
-    const filtered = data.filter((obj) => obj.name.toLowerCase().includes(value));
+    const value = e.target.value;
+    const regeXp = new RegExp(value, 'i');
+    const filtered = data.filter((obj) => Object.keys(obj).some((key) => regeXp.test(obj[key])));
     setFilter(value);
     setFilteredData(filtered);
   };
@@ -62,7 +63,7 @@ const TablePage = ({ data = [] }) => {
     const offset = (currentPage - 1) * pageLimit;
     const currentPageData = filteredData.slice(offset, offset + pageLimit);
     setCurrentPageData(currentPageData);
-  }, [filteredData, currentPage, pageLimit, sort, filter]);
+  }, [filteredData, currentPage, pageLimit, sort]);
 
   return (
     <>

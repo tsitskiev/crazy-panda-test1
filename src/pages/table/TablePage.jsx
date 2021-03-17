@@ -13,9 +13,8 @@ const TablePage = ({ data = [] }) => {
     order: 'asc',
   });
 
-  const makeSort = () => {
-    const { order, field } = sort;
-    const sorted = filteredData.sort((a, b) => {
+  const makeSort = (order, field) => {
+    const sorted = [...filteredData].sort((a, b) => {
       if (a[field] < b[field]) {
         return order === 'asc' ? -1 : 1;
       }
@@ -24,7 +23,7 @@ const TablePage = ({ data = [] }) => {
       }
       return 0;
     });
-    setFilteredData(sorted);
+    return sorted;
   };
 
   const onResetClick = () => {
@@ -36,11 +35,13 @@ const TablePage = ({ data = [] }) => {
 
   const handleSortClick = (e) => {
     const fieldName = e.target.ariaLabel;
+    const sortOrder = sort.field === fieldName && sort.order === 'asc' ? 'desc' : 'asc';
+    const sortedData = makeSort(sortOrder, fieldName);
     setSort({
       field: fieldName,
-      order: sort.field === fieldName && sort.order === 'asc' ? 'desc' : 'asc',
+      order: sortOrder,
     });
-    makeSort();
+    setFilteredData(sortedData);
   };
 
   const filterHandler = (e) => {
